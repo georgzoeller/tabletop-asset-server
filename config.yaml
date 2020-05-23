@@ -1,0 +1,142 @@
+
+contentRoot: 'content'
+
+tasks:
+  - name: Create directories
+    type: createModules
+
+  - name: Initialize downloader
+    type: initDownloader
+    args:
+      directory: 'var/cache'
+
+  - name: Fetching sources
+    type: fetchSources
+    args:
+        forceDownload: false
+
+  - name: Import Content
+    type: doContentImport
+
+  - name: generate Tiled JSONs
+    type: generatedBattleMapTiledJson
+
+
+  - name: Write content to disk (yaml)
+    type: persistContentToYaml
+    args:
+      overwriteExisting: false
+
+  - name: Start Webserver
+    type: startServerTask
+
+
+
+modules:
+  - id: core
+    name: Core
+
+  - id: princes-of-the-apocalypse
+    name: Princes of the Apocalypse
+
+  - id: hoard-of-the-dragon-queen
+    name: Hoard of the Dragon Queen
+
+  - id: out-of-the-abyss
+    name: Hoard of the Dragon Queen
+
+  - id: the-curse-of-strahd
+    name: The Curse Of Strahd
+
+  - id: storm-kings-thunder
+    name: Storm King''s Thunder
+
+  - id: tales-from-the-yawning-portal
+    name: Tales from the Yawning Portal
+
+  - id: the-rise-of-tiamat
+    name: The Rise Of Tiamat
+
+textures:
+
+
+
+sources:
+
+  - name: Monster Manual
+    type: xmlImportMonster
+    source: https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Bestiary/Monster%20Manual%20Bestiary.xml
+    target: core
+
+  - name: Volo's Bestiary
+    type: xmlImportMonster
+    source: "https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Bestiary/Volo's%20Bestiary.xml"
+    target: core
+
+  - name: Player''s Bestiary
+    type: xmlImportMonster
+    source: "https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Bestiary/Player%20Bestiary.xml"
+    target: core
+
+  - name: Tome of Beasts (Homebrew) Bestiary
+    type: xmlImportMonster
+    source: "https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Homebrew%20%26%20Third%20Party/Monsters/Tome%20of%20Beasts.xml"
+    target: core
+    flags: ['homebrew']
+
+  - name: Princes of the Apocalypse Bestiary
+    type: xmlImportMonster
+    source: "https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Bestiary/Princes%20of%20the%20Apocalypse%20Bestiary.xml"
+    target: princes-of-the-apocalypse
+
+  - name: Hoard of the Dragon Queen Bestiary
+    type: xmlImportMonster
+    source: "https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Bestiary/Hoard%20of%20the%20Dragon%20Queen%20Bestiary.xml"
+    target: hoard-of-the-dragon-queen
+
+  - name: Out of the Abyss Bestiary
+    type: xmlImportMonster
+    source: "https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Bestiary/Out%20of%20the%20Abyss.xml"
+    target: out-of-the-abyss
+
+  - name: The Curse Of Strahd Bestiary
+    type: xmlImportMonster
+    source: "https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Bestiary/Curse%20of%20Strahd%20Bestiary.xml"
+    target: the-curse-of-strahd
+
+  - name: Storm King''s Thunder Bestiary
+    type: xmlImportMonster
+    source: "https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Bestiary/Storm%20King's%20Thunder.xml"
+    target: storm-kings-thunder
+
+  - name: Tales from the Yarwning Portal Bestiary
+    type: xmlImportMonster
+    source: "https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Bestiary/Tales%20From%20the%20Yawining%20Portal%20Bestiary.xml"
+    target: tales-from-the-yawning-portal
+
+  - name: The Rise Of Tiamat Bestiary
+    type: xmlImportMonster
+    source: "https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Bestiary/The%20Rise%20of%20Tiamat%20Bestiary.xml"
+    target: the-rise-of-tiamat
+
+  - name: Omnibus Bestiary
+    type: xmlImportMonster
+    source: "https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Compendiums/Bestiary%20Compendium.xml"
+    target: core
+
+  - name: Monster Manual
+    type: xmlImportMonster
+    source: https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Bestiary/Monster%20Manual%20Bestiary.xml
+    target: core
+
+
+  - name: Curse of Strahd Maps
+    type : generatedBattleMapTiledJson
+    source: [https://www.worldanvil.com/uploads/maps/4e1ff939e6251a1c703183e0630f8e6a.png]
+    target: the-curse-of-strahd
+    kind: png
+    encoding: buffer
+
+
+
+
