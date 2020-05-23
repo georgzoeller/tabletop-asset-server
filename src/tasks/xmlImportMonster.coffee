@@ -140,6 +140,7 @@ XML_MAP_MONSTER = {
 module.exports = (context, args) ->
     debug "Commencing XML monster import from #{JSON.stringify args.name}"
 
+
     xml = args.source
     json = await context.download.xml xml
 
@@ -147,7 +148,8 @@ module.exports = (context, args) ->
       console.error "Invalid target module #{args.target} on job #{args.name}"
       return
 
-    target = context.modules[args.target].items
+    context.modules[args.target].collections.monsters ?= {}
+    target = context.modules[args.target].collections.monsters
 
     newObj = 0
     patched = 0

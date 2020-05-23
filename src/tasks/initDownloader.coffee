@@ -17,7 +17,6 @@ class CacheManager
   hash: (value)->  require('crypto').createHash('sha1').update(value).digest('hex')
 
   get: (url, ext='json', encoding = 'string', args = {}) ->
-    debug 'get', ext, encoding
     hash = @hash url
     file = "#{@opts.directory}/#{hash}.#{ext}"
 
@@ -37,7 +36,13 @@ class CacheManager
 
   xml: (url) ->
     xml = await @get url, 'xml'
-    convert.xml2js xml, { alwaysArray: false, compact: true, nativeTypes: true, trim: true,  ignoreComment: true, spaces: 2 }
+    try
+
+      return convert.xml2js xml, { alwaysArray: false, compact: true, nativeTypes: true, trim: true,  ignoreComment: true, spaces: 2 }
+    catch ex
+      console.log url
+      console.error ex
+      return null
 
 
 

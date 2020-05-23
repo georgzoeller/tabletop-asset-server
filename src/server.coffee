@@ -1,13 +1,30 @@
 
+pack = require '../package.json'
+program = require('commander').version(pack.version)
 Listr = require 'listr'
 
 fs = require 'fs-extra'
 yaml = require 'js-yaml'
 
-context = {}
+context = program
 context.config =  yaml.safeLoad fs.readFileSync 'config.yaml', 'utf8'
 context.tasks = []
 context.modules = {}
+
+
+program
+  .option  '-d, --debug', 'output extra debugging'
+  .option "-t --type <type>", "the type of build (#{Object.keys(context.config.tasks).join(', ')})", Object.keys(context.config.tasks)[0]
+
+
+program.parse process.argv
+
+process.on 'unhandledRejection', (reason, p) ->
+  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason)
+  process.exit()
+
+
+
 
 context.createTask = (context, t) ->
   ctor = require "#{process.cwd()}/src/tasks/#{t.type}"
@@ -22,7 +39,7 @@ context.tasks.push {
     throw new Error 'Error: config.yaml must exist in process root' if not fs.existsSync './config.yaml'
 }
 
-context.tasks.push configTask for configTask in context.config.tasks.map (t) -> context.createTask context, t
+context.tasks.push configTask for configTask in context.config.tasks[program.type].map (t) -> context.createTask context, t
 
 
 run = new Listr(context.tasks)

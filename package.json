@@ -1,11 +1,15 @@
 {
   "name": "tabletop-asset-server",
   "license": "MIT",
+  "version": "0.0.1",
   "dependencies": {
     "bent": "^7.3.1",
     "coffeescript": "^2.5.1",
+    "commander": "^5.1.0",
     "debug": "^4.1.1",
+    "dnd5-srd": "^1.0.0",
     "env-cmd": "^10.1.0",
+    "execa": "^4.0.2",
     "fs-extra": "^9.0.0",
     "jimp": "^0.12.1",
     "js-yaml": "^3.14.0",
@@ -13,10 +17,14 @@
     "koa-jwt": "^4.0.0",
     "listr": "^0.14.3",
     "mout": "^1.2.2",
+    "open": "^7.0.4",
+    "pouchdb": "^7.2.1",
     "xml-js": "^1.6.11"
   },
   "scripts": {
-    "start": "./node_modules/.bin/env-cmd -f ./.env.local node --trace-warnings --harmony run.js ./src/server.coffee",
-    "start-debug": "./node_modules/.bin/env-cmd -f ./.env.local node --trace-warnings --harmony --inspect run.js ./src/server.coffee"
+    "pouch": "./node_modules/.bin/env-cmd -f ./env.pouch ./node_modules/.bin/pouchdb-server -d var/db",
+    "start": "./node_modules/.bin/env-cmd -f ./.env.local node --trace-warnings --harmony  run.js ./src/server.coffee",
+    "start-debug": "./node_modules/.bin/env-cmd -f ./.env.local node --trace-warnings --harmony --inspect run.js ./src/server.coffee",
+    "serve": "./node_modules/.bin/env-cmd -f ./.env.local node --trace-warnings --harmony run.js ./src/server.coffee --type server"
   }
 }
