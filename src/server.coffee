@@ -33,8 +33,8 @@ context.tasks.push {
   task: () =>
     throw new Error 'Error: .env.local PORT=number (Web server port) must be set.'  if not process.env.PORT?
     throw new Error 'Error: .env.local PORT=number (Web server port) must be a number.'  if isNaN parseInt process.env.PORT
-    throw new Error 'Error: .env.local TOKEN_SECRET=string (Shared JWT Secret) must be set.' if not process.env.TOKEN_SECRET?
     throw new Error 'Error: config.yaml must exist in process root' if not fs.existsSync './config.yaml'
+    console.warn 'WARN: .env.local TOKEN_SECRET=string (Shared JWT Secret) should be set for security.' if not process.env.TOKEN_SECRET?
 }
 
 context.tasks.push configTask for configTask in context.config.tasks[program.type].map (t) -> context.createTask context, t
