@@ -34,6 +34,22 @@ To run the webserver after the database has been created
 yarn serve
 ```
 
+## Routes
+
+Currently the only functional route is:
+
+```http://localhost:3009:/assets/:type/:module/:id```
+
+where
+
+```
+  type: ['monsters','spells','items']
+  module: Any of the ones configured in config.yaml, for example 'core'
+  id: a mout/slugified name string such as 'aboleth' or 'lightning-bolt'
+```
+e.g.
+
+```http://localhost:3009:/assets/monstes/core/aboleth```
 
 ## Task System
 
