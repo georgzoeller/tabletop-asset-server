@@ -28,6 +28,13 @@ tasks:
     - name: Import Content
       type: doContentImport
 
+    - name: Detect Tokens
+      type: tokenize
+
+
+
+
+
     - name: generate Tiled JSONs
       type: generatedBattleMapTiledJson
 
@@ -228,6 +235,4 @@ modules:
     - name: The Rise Of Tiamat Bestiary
       type: xmlImportMonster
       source: "https://raw.githubusercontent.com/ceryliae/DnDAppFiles/master/Bestiary/The%20Rise%20of%20Tiamat%20Bestiary.xml"
-
-
 

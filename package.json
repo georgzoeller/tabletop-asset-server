@@ -20,12 +20,14 @@
     "mout": "^1.2.2",
     "open": "^7.0.4",
     "pouchdb": "^7.2.1",
-    "xml-js": "^1.6.11"
+    "xml-js": "^1.6.11",
+    "xregexp": "^4.3.0"
   },
   "scripts": {
     "pouch": "./node_modules/.bin/env-cmd -f ./env.pouch ./node_modules/.bin/pouchdb-server -d var/db",
     "start": "./node_modules/.bin/env-cmd -f ./.env.local node --trace-warnings --harmony  run.js ./src/server.coffee",
     "start-debug": "./node_modules/.bin/env-cmd -f ./.env.local node --trace-warnings --harmony --inspect run.js ./src/server.coffee",
-    "serve": "./node_modules/.bin/env-cmd -f ./.env.local node --trace-warnings --harmony run.js ./src/server.coffee --type server"
+    "serve": "./node_modules/.bin/env-cmd -f ./.env.local node --trace-warnings --harmony run.js ./src/server.coffee --type server",
+    "tx": "./node_modules/.bin/env-cmd -f ./.env.local node --trace-warnings --harmony run.js ./src/server.coffee --type test"
   }
 }

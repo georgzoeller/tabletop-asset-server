@@ -8,8 +8,6 @@ module.exports.get = (ctx, next) ->
     id = ctx.params['id']
     runtime = ctx.runtime
 
-    console.log ctx.params, ctx.query
-
     return ctx.status = 404 if not runtime.modules[mod]?
 
     # if we have the collections in memory we use that

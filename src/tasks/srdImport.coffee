@@ -44,7 +44,15 @@ module.exports = (context, args) ->
           obj.languages = obj.languages.split(',').map (e) -> e.trim?()
 
         obj.speed[k] = v.split(' ')[0] for k, v in obj.speed if obj.speed?
+        obj.url = "/assets/monsters/#{obj.id}"
 
+        delete p.url for p in obj.proficiencies when p.url?
+
+
+      else if target is spellCollection
+        obj.url = "/assets/spells/#{obj.id}"
+      else if target is itemCollection
+        obj.url = "/assets/items/#{obj.id}"
 
       if not target[obj.id]?
         #console.log "\t#{monster.id}: #{monster.name}"
