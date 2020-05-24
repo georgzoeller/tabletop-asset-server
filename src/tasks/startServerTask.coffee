@@ -5,11 +5,21 @@
 
 Koa = require 'koa'
 jwt = require 'koa-jwt'
+Router = require 'koa-router'
+fs = require 'fs'
+
 
 
 module.exports = (context, args) ->
     app = new Koa()
-    app.use jwt { secret: process.env.TOKEN_SECRET }
-    app.use (ctx) -> ctx.body = 'Hello World'
+    app.context.runtime = context
+    app.context.runtimeArgs = args
+    router =  new Router()
+    #app.use jwt { secret: process.env.TOKEN_SECRET }
+    #router.get '/', (ctx) -> ctx.body = 'yay'
+    router.get "/monsters/:module/:id", require('../routes/monster').get
+
+    app.use router.routes()
+    app.use router.allowedMethods()
     app.listen process.env.PORT
 

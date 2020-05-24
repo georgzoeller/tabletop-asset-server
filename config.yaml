@@ -3,7 +3,7 @@ contentRoot: 'content'
 
 tasks:
   full:
-    - name: Create directories
+    - name: Initialize Modules
       type: createModules
 
     #- name: Start PouchDB Server # can be avoided by using local files in location
@@ -58,8 +58,23 @@ tasks:
 
 
   server:
+    - name: Initialize Modules
+      type: createModules
+
+    - name: Mount Database
+      type: mountDatabase
+      args:
+        type: 'pouch'
+        location: 'var/db'
+
     - name: Start Webserver
       type: startServerTask
+
+    - name: Open browser
+      type: open
+      args:
+        cmd: http://localhost:3009/monsters/core/aboleth
+
 
 
 modules:

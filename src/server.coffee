@@ -24,11 +24,9 @@ process.on 'unhandledRejection', (reason, p) ->
   process.exit()
 
 
-
-
 context.createTask = (context, t) ->
   ctor = require "#{process.cwd()}/src/tasks/#{t.type}"
-  {title: t.name, task: -> ctor(context, t.args||{})}
+  {title: t.name + " #{(JSON.stringify t.args||{})}", task: -> ctor(context, t.args||{})}
 
 context.tasks.push {
   title: 'Validating config'
