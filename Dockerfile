@@ -6,6 +6,7 @@ ENV PORT=3009
 ENV NODE_ENV=development
 
 COPY package*.json ./
+COPY . .
 COPY .env ./.env.local
 
 RUN ["yarn", "install"]
