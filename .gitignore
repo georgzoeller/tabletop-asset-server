@@ -11,6 +11,7 @@ var/
 ./cache/**
 ./var/**
 content/
+docker-certs/
 
 # Sensitive or high-churn files:
 .idea/dataSources/

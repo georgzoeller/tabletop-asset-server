@@ -73,7 +73,7 @@ tasks:
     - name: Open browser
       type: open
       args:
-        cmd: http://localhost:3009/monsters/core/aboleth
+        cmd: http://localhost:3009/assets/monsters/core/aboleth
 
 
 

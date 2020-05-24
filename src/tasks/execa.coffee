@@ -10,8 +10,8 @@ module.exports = (context, args) ->
 
     if args.action is 'exec'
         try
-            module[args.handle] = execa(args.cmd, args.args)
-            #module[args.handle].stdout.pipe(process.stdout) if module[args.handle]?
+            module[args.handle] = await execa(args.cmd, args.args)
+            module[args.handle].stdout.pipe(process.stdout) if module[args.handle]?
         catch ex
             console.error ex
 

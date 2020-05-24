@@ -28,7 +28,8 @@ yarn start
 ```
 
 
-To run the webserver after the dtabase has been created
+To run the webserver after the database has been created
+
 ```
 yarn serve
 ```
@@ -38,19 +39,23 @@ yarn serve
 
 To modify or add the tasks that are run, have a look at `config.yaml`
 
+### Adding new tasks
+
+To add new tasks, add the definition in src/tasks (or use one of the existing definitions) and under config.yaml .tasks either into the 'full' task flow or into your own custom flow (which can by run with ```yarn start --type <flow>```).
 
 
-## PouchDB frontend
+## PouchDB frontend (optional)
 
 To view / manipulate the pouchdb database one can use pouchdb-server if wanted
 
 ```
-npm install -g pouchdb-server
-pouchdb-server -d /var -p 3010
+npm install pouchdb-server
+yarn pouch
 open http://localhost:5894/_utils/
 ```
 
 for databases for the modules to show up in the Futon UI, just create them in the frontend once.
+
 
 
 ## Using a remote database
@@ -61,5 +66,3 @@ modify `args.location` for the database tasks accordingly
 ```
   location: http://127.0.0.1:3010
 ```
-
-
