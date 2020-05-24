@@ -49,3 +49,4 @@ class CacheManager
 
 module.exports = (context, args ) ->
     context.download = new CacheManager(args)
+    Promise.resolve()

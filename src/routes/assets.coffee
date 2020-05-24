@@ -37,7 +37,7 @@ module.exports.get = (ctx, next) ->
           ctx.status = 200
         .catch (err) ->
           ctx.body = err
-          ctx.status = 500
+          ctx.status = err.status
           console.error err
 
     else

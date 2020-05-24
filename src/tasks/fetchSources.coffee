@@ -8,7 +8,6 @@ path = require 'path'
 module.exports = (context, args) ->
   sources = [ ]
 
-
   context.config.modules.forEach (module) ->
 
     module.sources.forEach (s) ->

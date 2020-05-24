@@ -51,6 +51,9 @@ module.exports = (context, args) ->
 
       else if target is spellCollection
         obj.url = "/assets/spells/#{obj.id}"
+        delete p.url for p in obj.classes when p.url?
+        delete p.url for p in obj.school when p.url?
+
       else if target is itemCollection
         obj.url = "/assets/items/#{obj.id}"
 

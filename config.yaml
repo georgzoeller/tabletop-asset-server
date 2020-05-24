@@ -32,9 +32,6 @@ tasks:
       type: tokenize
 
 
-
-
-
     - name: generate Tiled JSONs
       type: generatedBattleMapTiledJson
 
@@ -75,7 +72,16 @@ tasks:
         location: 'var/db'
 
     - name: Start Webserver
-      type: startServerTask
+      type: startServer
+      args:
+        cors:
+          origin: '*'
+        compress:
+          threshold: 2048
+        jwt:
+          debug: true
+          bannedUserIds: []
+          revokedTokens: {}
 
     - name: Open browser
       type: open
