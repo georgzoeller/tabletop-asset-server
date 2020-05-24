@@ -17,7 +17,8 @@ module.exports = (context, args) ->
     router =  new Router()
     #app.use jwt { secret: process.env.TOKEN_SECRET }
     #router.get '/', (ctx) -> ctx.body = 'yay'
-    router.get "/monsters/:module/:id", require('../routes/monster').get
+
+    router.get "/:type/:module/:id", require('../routes/singleAsset').get
 
     app.use router.routes()
     app.use router.allowedMethods()
